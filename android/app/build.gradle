@@ -1,0 +1,72 @@
+plugins {
+    id "com.android.application"
+    id "com.google.gms.google-services"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.ranjeet.worksmart"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.ranjeet.worksmart"
+        minSdkVersion 23
+        targetSdkVersion flutter.targetSdkVersion
+        // versionCode flutter.versionCode
+        // versionName flutter.versionName
+        versionCode 4 // Increment this value (e.g., 2, 3, ...)
+        versionName "1.0.3" // Optionally update this as well (e.g., "1.0.1", "1.0.2", ...)
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            // Uncomment the below when your keystore is ready
+            // signingConfig signingConfigs.release
+
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    signingConfigs {
+    release {
+        keyAlias 'keyalias'
+        keyPassword 'Bitchplease@99'
+        storeFile file('../app/my-release-key.keystore')
+        storePassword 'Bitchplease@99'
+    }
+   }
+   buildTypes {
+   release {
+        signingConfig signingConfigs.release
+        minifyEnabled false
+        shrinkResources false
+    }
+   }
+
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:33.7.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-firestore'
+}

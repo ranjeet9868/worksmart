@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "476723641559",
+    "project_id": "worksmart-e1270",
+    "storage_bucket": "worksmart-e1270.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476723641559:android:1867c4f6aadce3b04fc492",
+        "android_client_info": {
+          "package_name": "com.ranjeet.worksmart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz34Ezmuc-hIsXPgKiQ_2GIuf8mo6xPh0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
