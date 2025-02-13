@@ -1,5 +1,6 @@
 name: iOS Build
 on: [push]
+
 jobs:
   build-ios:
     runs-on: macos-latest
@@ -10,10 +11,13 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          flutter-version: '3.27.1'  # 🔥 Set the exact Flutter version you need
+          architecture: x64  # 🔥 Force x64 architecture for compatibility
 
       - name: Install CocoaPods
-        run: pod install --project-directory=ios
+        run: |
+          sudo gem install cocoapods
+          cd ios && pod install
 
       - name: Build iOS App
         run: flutter build ios --no-codesign
