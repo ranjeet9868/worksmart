@@ -1,0 +1,19 @@
+name: iOS Build
+on: [push]
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install CocoaPods
+        run: pod install --project-directory=ios
+
+      - name: Build iOS App
+        run: flutter build ios --no-codesign
