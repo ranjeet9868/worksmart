@@ -9,7 +9,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Flutter
-        uses: subosito/flutter-action@v2
+        - uses: subosito/flutter-action@v2
+          with:
+            flutter_version: "3.27.1" # Or your required Flutter version
+
         with:
           flutter-version: '3.27.1'  # 🔥 Set the exact Flutter version you need
           architecture: x64  # 🔥 Force x64 architecture for compatibility
