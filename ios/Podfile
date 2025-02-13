@@ -5,11 +5,15 @@ target 'Runner' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Runner
-  flutter_application_path = File.join(File.dirname(File.realpath(__FILE__)), '..', 'Flutter')
-  load File.join(flutter_application_path, 'flutter_export_environment.sh')
+  # Ensure the Flutter path is correct
+  flutter_application_path = File.expand_path('..', __dir__)
+  load File.join(flutter_application_path, 'Flutter', 'flutter_export_environment.sh')
+  
 
-  pod 'Flutter', :path => File.join(flutter_application_path, 'engine')
+  # Correctly reference Flutter
+  pod 'Flutter', :path => '../Flutter'
+
+  # Add Firebase correctly
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
 
