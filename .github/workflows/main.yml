@@ -1,0 +1,30 @@
+name: iOS Build
+
+on:
+  push:
+    branches:
+      - main  # Runs when you push to the main branch
+  pull_request:
+    branches:
+      - main  # Runs on pull requests to the main branch
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+
+jobs:
+  build-ios:
+    runs-on: macos-13  # Use macOS-13 instead of macOS-12 for better availability
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.27.1"
+          architecture: x64  # Avoid arm64 errors
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build iOS
+        run: flutter build ios --no-codesign
